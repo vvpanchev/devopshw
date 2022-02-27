@@ -34,8 +34,8 @@ require_once ('config.php');
       } else {
          $total = 0;
          foreach ($citizens as $citizen) {
-            print "<tr><td>{$citizens['citizen_type']}</td><td align=\"right\">{$citizens['population']}</td></tr>\n";
-           $total += $citizens['population'];
+            print "<tr><td>{$citizen['citizen_type']}</td><td align=\"right\">{$citizen['population']}</td></tr>\n";
+           $total += $citizen['population'];
          }
          print "<tr><td><b>ОБЩО</b></td><td align=\"right\">{$total}</td></tr>\n";
       }
