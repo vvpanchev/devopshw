@@ -41,6 +41,7 @@ require_once ('config.php');
       }
    }
    catch (PDOException $e) {
+      echo $e->getMessage().'<br>';
       print "<tr><td>Няма връзка към базата. Опитайте отново.</td></tr>\n";
    }
 ?>
