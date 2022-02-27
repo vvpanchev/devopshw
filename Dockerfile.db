@@ -1,0 +1,2 @@
+FROM vvpanchev/hw-db
+ADD ./db/db_setup.sql /docker-entrypoint-initdb.d/init.sql
