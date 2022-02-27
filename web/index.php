@@ -18,29 +18,26 @@
           <td></td>
           <td>7 101 859</td>
         </tr>
-        <tr>
-          <td>Столица</td>
-          <td></td>
-          <td>София</td>
-        </tr>
       </table>
       <br />
       <h1>Големи градове</h1>
       <table>
 <?php
-   require_once ('config.php');
-
+require_once ('config.php');
    try {
       $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
-      $query = $connection->query("SELECT city_name, population FROM cities ORDER BY population DESC");
-      $cities = $query->fetchAll();
+      $query = $connection->query("SELECT person_type, population FROM citizens ORDER BY population DESC");
+      $citizens = $query->fetchAll();
 
-      if (empty($cities)) {
+      if (empty($citizens)) {
          echo "<tr><td>Няма данни.</td></tr>\n";
       } else {
-         foreach ($cities as $city) {
-            print "<tr><td>{$city['city_name']}</td><td align=\"right\">{$city['population']}</td></tr>\n";
+         $total = 0;
+         foreach ($citizens as $citizen) {
+            print "<tr><td>{$citizens['person_type']}</td><td align=\"right\">{$citizens['population']}</td></tr>\n";
+           $total += $citizens['population'];
          }
+         print "<tr><td><b>ОБЩО</b></td><td align=\"right\">{$total}</td></tr>\n";
       }
    }
    catch (PDOException $e) {
