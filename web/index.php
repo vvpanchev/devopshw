@@ -46,5 +46,6 @@ require_once ('config.php');
 ?>
       </table>
     </div>
+    <?php print "Node: <b>".gethostname()."</b>";?>
   </body>
 </html>
