@@ -1,21 +1,17 @@
 version: "3.8"
 services:
     web:
-        build:
-            context: .
-            dockerfile: Dockerfile.web
+        image: vvpanchev/hw-web
+        deploy:
+            replicas: 3
         ports:
             - 8080:80
         volumes:
             - "${PROJECT_ROOT}:/var/www/html:ro"
         networks:
             - app-network
-        depends_on:
-            - db
     db:
-        build:
-            context: .
-            dockerfile: Dockerfile.db
+        image: vvpanchev/hw-db
         networks:
             - app-network
         environment:
