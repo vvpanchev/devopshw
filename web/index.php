@@ -26,7 +26,7 @@
 require_once ('config.php');
    try {
       $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
-      $query = $connection->query("SELECT person_type, population FROM citizens ORDER BY population DESC");
+      $query = $connection->query("SELECT citizen_type, population FROM citizens ORDER BY population DESC");
       $citizens = $query->fetchAll();
 
       if (empty($citizens)) {
@@ -34,7 +34,7 @@ require_once ('config.php');
       } else {
          $total = 0;
          foreach ($citizens as $citizen) {
-            print "<tr><td>{$citizens['person_type']}</td><td align=\"right\">{$citizens['population']}</td></tr>\n";
+            print "<tr><td>{$citizens['citizen_type']}</td><td align=\"right\">{$citizens['population']}</td></tr>\n";
            $total += $citizens['population'];
          }
          print "<tr><td><b>ОБЩО</b></td><td align=\"right\">{$total}</td></tr>\n";
